@@ -10,7 +10,6 @@ syntax on
 "devC++
 "monokain
 "darkglass
-"monokain
 
 colorscheme darkglass
 
@@ -38,15 +37,14 @@ filetype off                  " required
 
 set clipboard=unnamed
 
-" Настройки табов для Python, согласно рекоммендациям
+" Настройки табов для Python
 set tabstop=4
 set shiftwidth=4
 set smarttab
 set expandtab "Ставим табы пробелами
 set softtabstop=4 "4 пробела в табе
-" Автоотступ
-"set autoindent
 
+"autoindent
 let python_highlight_all = 1
 
 " Перед сохранением вырезаем пробелы на концах (только в .py файлах)
@@ -54,7 +52,7 @@ let python_highlight_all = 1
 autocmd BufRead *.py set smartindent cinwords=if,elif,else,for,while,try,except,finally,def,class
 
 
-"set nu "Включаем нумерацию строк
+"set nu "Нумерация строк
 set mousehide "Спрятать курсор мыши когда набираем текст
 "set mouse=a "Включить поддержку мыши
 set termencoding=utf-8 "Кодировка терминала
