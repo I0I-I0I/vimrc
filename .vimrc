@@ -1,19 +1,28 @@
 "colorscheme option
 set t_Co=256
 syntax on
-
 "monokain
 "darkglass
 
-color monokain
+
+colorscheme monokain
+
 
 set background=dark
 "////////////////////////////////////////////////////////////
+
+filetype plugin on
+set omnifunc=syntaxcomplete#Complete
+
+" Always show statusline
+set laststatus=0
 
 "Настройки курсора
 let &t_EI.="\e[2 q" "EI = нормальный режим
 let &t_SI.="\e[5 q" "SI = режим вставки
 let &t_SR.="\e[3 q" "SR = режим замены
+
+"map <unique> :c  :colorscheme monokain<CR>
 
 
 "binds vim
@@ -28,10 +37,14 @@ set pastetoggle=<F2>
 set showmode
 
 "Настройка окон
-nnoremap <silent> <C-left> :tabnext<CR>
-nnoremap <silent> <C-right> :tabnext<CR>
-nnoremap <C-up> :tabnew<Space>
-nnoremap <silent> <C-down> :tabclose<CR>
+nnoremap <silent> <C-l> :tabnext<CR>
+nnoremap <silent> <C-h> :tabnext<CR>
+nnoremap <C-k> :tabnew<Space>
+nnoremap <silent> <C-j> :tabclose<CR>
+
+
+"fzf
+nmap <C-f> :Files<CR>
 
 
 "emmet binds
@@ -45,7 +58,7 @@ set clipboard=unnamed
 
 
 "Поддержка русского языка
-set langmap=ФИСВУАПРШОЛДЬТЩЗЙКЫЕГМЦЧНЯ;ABCDEFGHIJKLMNOPQRSTUVWXYZ,фисвуапршолдьтщзйкыегмцчня;abcdefghijklmnopqrstuvwxyz
+set langmap=!\\"№\\;%?*ёйцукенгшщзхъфывапролджэячсмитьбюЁЙЦУКЕHГШЩЗХЪФЫВАПРОЛДЖЭЯЧСМИТЬБЮ;!@#$%&*`qwertyuiop[]asdfghjkl\\;'zxcvbnm\\,.~QWERTYUIOP{}ASDFGHJKL:\\"ZXCVBNM<>
 
  " Настройки табов для Python, согласно рекоммендациям
 set tabstop=4
@@ -90,13 +103,27 @@ set ruler
 
 set hidden
 
+"Звук off
+set visualbell t_vb=
 
-" set the runtime path to include Vundle and initialize
+" Specify a directory for plugins
+" - For Neovim: stdpath('data') . '/plugged'
+" - Avoid using standard Vim directory names like 'plugin'
+"call plug#begin('~/.vim/plugged')
+
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
 
+" The following are examples of different formats supported.
+" Keep Plugin commands between vundle#begin/end.
+" plugin on GitHub repo
+"Plugin 'tpope/vim-fugitive'
+
+
+
 "Установщик плагинов
 Plugin 'VundleVim/Vundle.vim'
+"Plugin 'tpope/vim-sensible'
 
 
 "Colorscheme
@@ -120,16 +147,19 @@ Plugin 'junegunn/fzf.vim'
 
 "Autocomplete
 Plugin 'vim-scripts/AutoComplPop'
-Plugin 'davidhalter/jedi'
-Plugin 'davidhalter/jedi-vim'
+"Plugin 'davidhalter/jedi'
+"Plugin 'davidhalter/jedi-vim'
+
+"Plugin 'Shougo/deoplete.nvim'
+"Plugin 'roxma/nvim-yarp'
+"Plugin 'roxma/vim-hug-neovim-rpc'
+"let g:deoplete#enable_at_startup = 1
+
+"set rtp+=$HOME/.local/lib/python2.7/site-packages/powerline/bindings/vim/
 
 
-set rtp+=$HOME/.local/lib/python2.7/site-packages/powerline/bindings/vim/
 
-" Always show statusline
-set laststatus=1
-
-
-" " All of your Plugins must be added before the following line
+" Initialize plugin system
+"call plug#end()
 call vundle#end()            " required
-filetype plugin indent on    " required
+filetype plugin indent on
